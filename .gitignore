@@ -22,9 +22,3 @@ local-results/
 .memory-palace/
 .serena/
 .remember/
-
-# 本地真实稿件, 不提交; 测试用 fixture_factory.py 生成匿名 docx
-tests/测试文稿.docx
-
-# CLAUDE.md 是指向 AGENTS.md 的本地软链, 仅供 Claude Code 读取, 不提交
-CLAUDE.md
