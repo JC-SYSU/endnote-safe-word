@@ -35,4 +35,4 @@ jobs:
       - name: Install ruff
         run: pip install ruff
       - name: Ruff check
-        run: ruff check src packaging tests
+        run: ruff check src tests
