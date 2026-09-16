@@ -20,10 +20,9 @@ rewriting from DOCX mutation:
 5. structural, package-surface, semantic-position, and prose checks precede Word/
    EndNote review.
 
-Development source, generated release artifacts, and user installations are
-separate. Users install a checksummed versioned bundle into user-level directories;
-the repository's editable environment and generated `release/` output are
-maintenance concerns and are not part of normal use. This packaging change does not
+Users and their agents install the tool from this repository per
+[`INSTALL.md`](../INSTALL.md): the CLI, the MCP server, and the Skill are
+deployed without a self-extracting bundle. This installation model does not
 broaden document-editing behavior or evidence.
 
 The installed agent integration is named `word-document-safe-editing` for both the

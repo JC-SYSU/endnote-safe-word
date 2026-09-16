@@ -8,7 +8,9 @@
   source.
 - [`../skill/word-document-safe-editing/SKILL.md`](../skill/word-document-safe-editing/SKILL.md):
   agent-facing operating workflow.
-- [`RELEASING.md`](RELEASING.md): local release-bundle construction and acceptance.
+- [`INSTALL.md`](../INSTALL.md): agent-facing installation operating spec.
+- [`RELEASING.md`](RELEASING.md): versioning, tagging, and GitHub release
+  procedure.
 
 ## Historical evidence
 

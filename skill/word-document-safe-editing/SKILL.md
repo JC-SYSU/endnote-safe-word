@@ -5,8 +5,11 @@ description: Safely inspect, edit, rewrite, and verify Microsoft Word DOCX docum
 
 # Word document safe editing
 
-Invoke this Skill for every Word document edit. Use the installed `endnote-safe-word` CLI to preflight every DOCX and, when active EndNote fields are present, before and after each edit. The Skill and CLI are installed together from one versioned
-release bundle; detailed schema and fallback rules remain in the linked references.
+Invoke this Skill for every Word document edit. Use the installed
+`endnote-safe-word` CLI to preflight every DOCX and, when active EndNote
+fields are present, before and after each edit. The Skill and CLI are
+installed together from this repository per `INSTALL.md`; detailed schema and
+fallback rules remain in the linked references.
 
 ## Non-negotiable rules
 

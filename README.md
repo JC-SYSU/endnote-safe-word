@@ -11,37 +11,39 @@ refuses protected structures, writes a new DOCX, and verifies structural invaria
 The exact capability, evidence boundary, and next work are maintained in
 [`docs/STATUS.md`](docs/STATUS.md).
 
-## Install a release
+## Install
 
-Download the latest `endnote-safe-word-<version>.tar.gz` from the
-[Releases page](https://github.com/OWNER/REPO/releases/latest), extract it, then
-run its installer:
+**Let your agent do it.** Copy the block below and paste it into your agent
+(Codex, Claude Code, or any coding agent). The agent reads INSTALL.md and
+installs the three components (CLI, MCP server, Skill):
 
-```bash
-tar -xzf endnote-safe-word-<version>.tar.gz
-cd endnote-safe-word-<version>
-./install.sh
+```text
+You are installing EndNote Safe Word. The source repository is
+<this repository>. Do the following:
+
+1. Clone (or cd into) the repository at $REPO.
+2. Read INSTALL.md in full and execute it step by step: probe the
+   machine and pick the install profile (section 0), install the CLI
+   (section 1), verify the CLI (section 2), register the MCP server
+   (section 3), and install the Skill (section 4).
+3. Before any step that writes outside the repository (~/.codex,
+   ~/.claude, shell rc files), show me the exact file and content and
+   wait for my confirmation.
+4. When everything is done, run the acceptance checklist (section 5)
+   and report each item's result to me. Anything that fails: fix it
+   per the troubleshooting table (section 6) before reporting back.
 ```
 
-The installer verifies the bundle checksums and installs:
-
-- a versioned runtime under `~/.local/share/endnote-safe-word/`;
-- stable CLI and MCP links under `~/.local/bin/`;
-- the `word-document-safe-editing` Skill under
-  `~/.codex/skills/word-document-safe-editing/`;
-- the `word-document-safe-editing` MCP server entry point.
-
-Third-party dependencies may be downloaded by pip. Add `~/.local/bin` to `PATH` if
-needed. The installer prints, but does not execute, the stable `codex mcp add`
-command. It never needs or modifies a development checkout.
+If you prefer to install by hand, follow [`INSTALL.md`](INSTALL.md) directly.
+The three components: an `endnote-safe-word` CLI, the
+`word-document-safe-editing` MCP server (you register with your agent client),
+and the `word-document-safe-editing` Skill (the agent behavior contract, kept
+in the client's skills directory).
 
 The Skill is intentionally broad: agents must invoke it for every Word-document
 editing request so they preflight the DOCX and choose a format-preserving route.
 The current native mutation engine remains conservative and may refuse structures
 outside its documented support boundary.
-
-Install locations can be overridden with `ENDNOTE_SAFE_WORD_DATA_HOME`,
-`ENDNOTE_SAFE_WORD_BIN_HOME`, `CODEX_HOME`, or `CODEX_SKILLS_HOME`.
 
 Release maintainers should use [`docs/RELEASING.md`](docs/RELEASING.md). Editable
 installation is intentionally not part of the user workflow.
