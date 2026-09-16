@@ -157,6 +157,19 @@ def build_parser() -> argparse.ArgumentParser:
     verify.add_argument("after")
     verify.add_argument("--json", dest="json_path")
     verify.add_argument("--allow-format-count-change", action="store_true")
+    verify.add_argument(
+        "--allow-field-reordering",
+        action="store_true",
+        help="Accept reordered citation fields instead of requiring an identical "
+        "atomic field order.",
+    )
+    verify.add_argument(
+        "--expected-citation-order",
+        metavar="SHA256,...",
+        help="Declared citation field order (e.g. the expected_citation_order from "
+        "a rewrite-apply report) as a comma-separated field SHA-256 list. "
+        "Requires --allow-field-reordering.",
+    )
     return parser
 
 
@@ -235,10 +248,20 @@ def main(argv: list[str] | None = None) -> int:
             _write_json(payload, args.report)
             return 0 if payload["status"] == "pass" else 2
         if args.command == "verify":
+            if args.expected_citation_order is not None:
+                expected_order = args.expected_citation_order.split(",")
+                if not args.allow_field_reordering:
+                    raise DocxError(
+                        "--expected-citation-order requires --allow-field-reordering."
+                    )
+            else:
+                expected_order = None
             payload = verify_docx(
                 args.before,
                 args.after,
                 strict_format_counts=not args.allow_format_count_change,
+                allow_field_reordering=args.allow_field_reordering,
+                expected_citation_order=expected_order,
             )
             _write_json(payload, args.json_path)
             return 0 if payload["status"] == "pass" else 2

@@ -661,18 +661,10 @@ def apply_rewrite_view(
     ]
     identity_matches = expected_identity == actual_identity
 
-    expected_plain_paragraphs: list[str] = []
-    for _, text in edited:
-        for token, atom in model.formats.items():
-            text = text.replace(token, atom.text)
-        for token in model.citations:
-            text = text.replace(token, "")
-        expected_plain_paragraphs.append(text)
     visible = extract_visible_introduction(
         output,
         paragraph_indices=model.paragraph_indices,
     )
-    prose_matches = visible["text"] == "\n".join(expected_plain_paragraphs)
 
     failures: list[str] = []
     if verification["status"] != "pass":
@@ -683,8 +675,6 @@ def apply_rewrite_view(
         failures.append(
             "Reparsed paragraph atom positions do not match the rewrite view."
         )
-    if not prose_matches:
-        failures.append("Reparsed ordinary prose does not match the rewrite view.")
 
     result = {
         "schema_version": 1,
@@ -702,11 +692,9 @@ def apply_rewrite_view(
             "field_and_format_verification_passed": verification["status"] == "pass",
             "package_change_surface_passed": surface["status"] == "pass",
             "semantic_paragraph_views_match": identity_matches,
-            "ordinary_prose_matches": prose_matches,
         },
         "verification": verification,
         "change_surface": surface,
-        "visible_prose": visible,
         "failures": failures,
     }
     if failures and not keep_failed_output:

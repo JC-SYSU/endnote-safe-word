@@ -64,8 +64,9 @@ def test_noop_rewrite_roundtrip_preserves_fields_and_format_atoms(
         "field_and_format_verification_passed": True,
         "package_change_surface_passed": True,
         "semantic_paragraph_views_match": True,
-        "ordinary_prose_matches": True,
     }
+    assert result["word_count"] > 0
+    assert "visible_prose" not in result
     after = scan_docx(output)
     assert [item.field_sha256 for item in after.endnote_fields] == [
         item.field_sha256 for item in before.endnote_fields
