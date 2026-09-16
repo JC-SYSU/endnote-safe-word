@@ -7,7 +7,7 @@ name = "endnote-safe-word"
 version = "0.1.0a4"
 description = "Conservative OOXML guardrails for editing Word documents containing EndNote CWYW fields"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = {text = "MIT"}
 authors = [{name = "EndNote Safe Word contributors"}]
 dependencies = ["lxml>=5.0"]
@@ -19,7 +19,7 @@ classifiers = [
 
 [project.optional-dependencies]
 mcp = ["mcp>=1.29,<2"]
-dev = ["pytest>=8.0", "packaging>=23", "tomli>=2.0; python_version < '3.11'"]
+dev = ["pytest>=8.0", "packaging>=23"]
 
 [project.scripts]
 endnote-safe-word = "endnote_safe_word.cli:main"

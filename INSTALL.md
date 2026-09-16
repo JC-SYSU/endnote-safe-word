@@ -17,7 +17,7 @@ repository — show the user the exact file and content before writing.
 ## 0. Probe the machine first — pick the install profile
 
 ```bash
-python3 --version        # must be 3.10 or newer
+python3 --version        # must be 3.11 or newer
 command -v codex         # Codex CLI on PATH?
 command -v claude        # Claude Code CLI on PATH?
 ```
@@ -31,7 +31,7 @@ command -v claude        # Claude Code CLI on PATH?
 
 | # | Check | Command | Expected | Failure handling |
 | ---- | ---- | ---- | ---- | ---- |
-| 0.1 | Python version | `python3 --version` | 3.10.x or newer | install Python 3.10+, then restart the install |
+| 0.1 | Python version | `python3 --version` | 3.11.x or newer | install Python 3.11+, then restart the install |
 | 0.2 | Git | `command -v git` | path | install git |
 | 0.3 | Codex dir (profile A/C) | `ls ~/.codex/` | config.toml or skills/ may not exist yet | installer steps create them |
 

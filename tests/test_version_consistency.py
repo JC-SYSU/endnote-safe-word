@@ -1,11 +1,7 @@
 from __future__ import annotations
 
+import tomllib
 from pathlib import Path
-
-try:
-    import tomllib
-except ModuleNotFoundError:  # Python 3.10
-    import tomli as tomllib  # type: ignore[no-redef]
 
 import endnote_safe_word
 
