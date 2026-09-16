@@ -1,6 +1,6 @@
 # EndNote Safe Word — validated alpha
 
-[![CI](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/ci.yml)
+[![CI](https://github.com/JC-SYSU/endnote-safe-word/actions/workflows/ci.yml/badge.svg)](https://github.com/JC-SYSU/endnote-safe-word/actions/workflows/ci.yml)
 
 A conservative CLI, optional MCP server, and Codex Skill for editing `.docx`
 manuscripts that contain active EndNote Cite While You Write fields.
@@ -19,7 +19,7 @@ installs the three components (CLI, MCP server, Skill):
 
 ```text
 You are installing EndNote Safe Word. The source repository is
-<this repository>. Do the following:
+https://github.com/JC-SYSU/endnote-safe-word. Do the following:
 
 1. Clone (or cd into) the repository at $REPO.
 2. Read INSTALL.md in full and execute it step by step: probe the
