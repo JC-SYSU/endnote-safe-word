@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "tool": "officecli",
+  "version": "1.0.136",
+  "semantic_serializer_parts": [
+    "word/numbering.xml",
+    "word/settings.xml",
+    "word/styles.xml"
+  ],
+  "custom_properties_part": "docProps/custom.xml",
+  "custom_properties_content_type": "application/vnd.openxmlformats-officedocument.custom-properties+xml",
+  "custom_properties_relationship_type": "http://schemas.openxmlformats.org/officeDocument/2006/relationships/custom-properties",
+  "custom_properties_target": "/docProps/custom.xml",
+  "custom_properties": [
+    "OfficeCLI.Version",
+    "OfficeCLI.LastModified"
+  ]
+}
