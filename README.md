@@ -115,7 +115,17 @@ subtrees, and enforces field, record, formatting, token, and package-surface
 invariants. It refuses unsupported fields, reference-list selections, nested body
 paragraphs, protected wrappers, malformed tokens, and stale or tampered views.
 
-## Independent verification
+## Verification
+
+`rewrite-apply` runs the complete automated verification inside the transaction
+and reports it in the `--report` JSON: EndNote and formatting invariants
+(`verification`), the DOCX package change surface (`change_surface`), and
+reparsed semantic paragraph views (`checks`). Use that report as the automated
+gate: reject the candidate unless `status` is `pass` and `failures` is empty.
+
+The standalone `verify` and `check-surface` commands remain available for
+independent audit or troubleshooting, for example to compare two documents
+outside a rewrite transaction:
 
 ```bash
 endnote-safe-word verify manuscript.docx manuscript_rewritten.docx \
@@ -126,7 +136,13 @@ endnote-safe-word check-surface manuscript.docx manuscript_rewritten.docx \
   --json manuscript.surface.json
 ```
 
-Reject the candidate if either command fails or reports unexpected changes.
+When a rewrite moved complete citation fields, citation order changed and a
+plain `verify` fails by design. Pass `--allow-field-reordering` together with
+the `--expected-citation-order` list from the apply report to verify the
+declared order instead.
+
+The Word and EndNote gate below remains mandatory for every candidate
+regardless of automated results.
 
 ## Word and EndNote gate
 

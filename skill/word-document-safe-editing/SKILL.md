@@ -89,7 +89,16 @@ The apply step pins the source hash and metadata, reinserts deep copies of the
 original OOXML atoms, reparses prose and atom positions, and enforces field,
 formatting, record-identity, and package-surface invariants.
 
-## Independent verification
+## Transaction verification
+
+`rewrite-apply` runs the complete automated verification inside the transaction
+(field and formatting invariants, package change surface, and reparsed semantic
+paragraph views) and reports it in the `--report` JSON. Use that report as the
+automated gate and reject the candidate unless `status` is `pass` and
+`failures` is empty.
+
+Run standalone `verify` or `check-surface` only for independent audit or
+troubleshooting:
 
 ```bash
 endnote-safe-word verify manuscript.docx manuscript_rewritten.docx \
@@ -100,7 +109,13 @@ endnote-safe-word check-surface manuscript.docx manuscript_rewritten.docx \
   --json manuscript.surface.json
 ```
 
-Reject the candidate if either command fails or reports unexpected changes.
+A rewrite that moved complete citation fields changes citation order, and a
+plain `verify` then fails by design. Pass `--allow-field-reordering` with the
+`--expected-citation-order` list from the apply report to verify the declared
+order instead.
+
+Never treat an automated pass as a substitute for the Word and EndNote gate
+below.
 
 ## Word and EndNote gate
 
