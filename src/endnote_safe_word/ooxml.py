@@ -7,13 +7,12 @@ import json
 import os
 import tempfile
 import zipfile
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Iterable
 
 from lxml import etree
 
 from .constants import W
-
 
 W14 = "{http://schemas.microsoft.com/office/word/2010/wordml}"
 _VOLATILE_SEMANTIC_ATTRIBUTES = {

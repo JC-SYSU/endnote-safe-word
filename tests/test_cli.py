@@ -3,9 +3,10 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from fixture_factory import make_nested_endnote_docx
+
 from endnote_safe_word.cli import main
 from endnote_safe_word.rewrite_view import export_rewrite_view
-from fixture_factory import make_nested_endnote_docx
 
 
 def test_cli_verify_rejects_reordered_fields_without_flag(

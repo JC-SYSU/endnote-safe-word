@@ -20,7 +20,6 @@ from .ooxml import (
     token_hash,
 )
 
-
 _REL_NS = "{http://schemas.openxmlformats.org/package/2006/relationships}"
 _PROTECTED_TAGS = {
     f"{W}ins",

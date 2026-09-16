@@ -2,11 +2,10 @@ from __future__ import annotations
 
 import hashlib
 import importlib.util
-from pathlib import Path
 import subprocess
 import sys
 import tarfile
-
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BUILDER_PATH = ROOT / "packaging/build_release.py"
@@ -75,6 +74,7 @@ def test_installer_rejects_checksum_tampering(tmp_path: Path) -> None:
         env={"HOME": str(tmp_path / "home"), "PATH": "/usr/bin:/bin"},
         capture_output=True,
         text=True,
+        check=False,
     )
     assert result.returncode != 0
     assert not (tmp_path / "home/.local/share/endnote-safe-word").exists()
@@ -112,6 +112,7 @@ def test_installer_refuses_unmanaged_command_before_mutation(tmp_path: Path) -> 
         env={"HOME": str(home), "PATH": "/usr/bin:/bin"},
         capture_output=True,
         text=True,
+        check=False,
     )
     assert result.returncode == 2
     assert "not a managed symlink" in result.stderr

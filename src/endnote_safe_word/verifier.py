@@ -62,7 +62,6 @@ def compare_reports(
     after_record_multiset = Counter(after.record_identities)
     before_format_multiset = Counter(_format_signature(before))
     after_format_multiset = Counter(_format_signature(after))
-    before_citation_order = [f.field_sha256 for f in before.citation_fields]
     after_citation_order = [f.field_sha256 for f in after.citation_fields]
 
     if before.errors:
@@ -99,12 +98,15 @@ def compare_reports(
 
     if not allow_field_reordering and before_atomic != after_atomic:
         failures.append("Atomic EndNote field order changed.")
-    elif allow_field_reordering and expected_citation_order is not None:
-        if after_citation_order != expected_citation_order:
-            failures.append(
-                "Citation field order does not match the declared transaction order: "
-                f"expected={expected_citation_order}; after={after_citation_order}."
-            )
+    elif (
+        allow_field_reordering
+        and expected_citation_order is not None
+        and after_citation_order != expected_citation_order
+    ):
+        failures.append(
+            "Citation field order does not match the declared transaction order: "
+            f"expected={expected_citation_order}; after={after_citation_order}."
+        )
 
     if before_record_multiset != after_record_multiset:
         failures.append(

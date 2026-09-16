@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-import json
 import zipfile
 from pathlib import Path
 
 import pytest
+from fixture_factory import make_docx, make_nested_endnote_docx
 from lxml import etree
 
 from endnote_safe_word.atomic_mover import CitationMoveSpec, move_citation_fields
@@ -13,7 +13,6 @@ from endnote_safe_word.ooxml import DocxError
 from endnote_safe_word.patcher import PatchSpec, patch_docx
 from endnote_safe_word.scanner import scan_docx
 from endnote_safe_word.verifier import verify_docx
-from fixture_factory import make_docx, make_nested_endnote_docx
 
 
 def test_scan_detects_endnote_field(tmp_path: Path) -> None:

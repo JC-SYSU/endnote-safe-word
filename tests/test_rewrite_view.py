@@ -4,11 +4,11 @@ import zipfile
 from pathlib import Path
 
 import pytest
+from fixture_factory import make_docx, make_nested_endnote_docx
 
 from endnote_safe_word.ooxml import DocxError
 from endnote_safe_word.rewrite_view import apply_rewrite_view, export_rewrite_view
 from endnote_safe_word.scanner import scan_docx
-from fixture_factory import make_docx, make_nested_endnote_docx
 
 
 def _rewrite_document_xml(path: Path, transform) -> None:

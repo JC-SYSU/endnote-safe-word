@@ -22,7 +22,6 @@ from .ooxml import (
     word_xml_parts,
 )
 
-
 _SIGNIFICANT_RUN_PROPERTIES = {
     "b",
     "bCs",
@@ -326,6 +325,6 @@ def scan_docx(path: str | Path) -> ScanReport:
         for part in sorted(word_xml_parts(zf)):
             try:
                 report.parts.append(scan_part(part, zf.read(part)))
-            except Exception as exc:  # retain partial report for diagnosis
+            except Exception as exc:  # noqa: BLE001 - retain partial report for diagnosis
                 report.errors.append(f"{part}: {exc}")
     return report

@@ -10,7 +10,6 @@ from lxml import etree
 from .constants import W
 from .ooxml import DocxError, ancestor_has_tag, ensure_docx, parse_xml, sha256_file
 
-
 WORD_PATTERN = r"[A-Za-z0-9\u0370-\u03FF]+(?:[-\u2013][A-Za-z0-9\u0370-\u03FF]+)*"
 _WORD_RE = re.compile(WORD_PATTERN)
 

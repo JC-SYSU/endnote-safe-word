@@ -3,10 +3,10 @@ from __future__ import annotations
 import zipfile
 from pathlib import Path
 
+from fixture_factory import make_nested_endnote_docx
 from lxml import etree
 
 from endnote_safe_word.change_surface import check_docx_change_surface
-from fixture_factory import make_nested_endnote_docx
 
 
 def _rewrite_package(

@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-import os
 import zipfile
 from dataclasses import dataclass
 from pathlib import Path
@@ -9,7 +8,7 @@ from typing import Any
 
 from lxml import etree
 
-from .constants import PATCHABLE_PREFIXES, W, XML_SPACE
+from .constants import PATCHABLE_PREFIXES, XML_SPACE, W
 from .ooxml import (
     DocxError,
     ancestor_has_tag,
@@ -32,7 +31,7 @@ class PatchSpec:
     context_contains: str | None = None
 
     @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> "PatchSpec":
+    def from_dict(cls, data: dict[str, Any]) -> PatchSpec:
         if not isinstance(data.get("find"), str) or not data["find"]:
             raise DocxError("Each patch requires a non-empty string 'find'.")
         if not isinstance(data.get("replace"), str):

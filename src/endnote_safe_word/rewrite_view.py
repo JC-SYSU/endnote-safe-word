@@ -13,7 +13,7 @@ from lxml import etree
 
 from .atomic_mover import _atomic_endnote_ranges, _direct_run_child
 from .change_surface import check_docx_change_surface
-from .constants import W, XML_SPACE
+from .constants import XML_SPACE, W
 from .experiment_text import extract_visible_introduction
 from .models import FieldRecord, ScanReport
 from .ooxml import (
@@ -28,7 +28,6 @@ from .ooxml import (
 )
 from .scanner import scan_docx, scan_part
 from .verifier import compare_reports
-
 
 VIEW_SCHEMA_VERSION = 1
 VIEW_MODE = "native_ooxml_rewrite"

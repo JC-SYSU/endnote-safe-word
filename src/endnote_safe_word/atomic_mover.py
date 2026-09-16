@@ -10,7 +10,7 @@ from typing import Any
 
 from lxml import etree
 
-from .constants import W, XML_SPACE
+from .constants import XML_SPACE, W
 from .ooxml import (
     DocxError,
     ancestor_has_tag,
@@ -31,7 +31,7 @@ class CitationMoveSpec:
     expected_field_sha256: str
 
     @classmethod
-    def from_dict(cls, data: dict[str, Any]) -> "CitationMoveSpec":
+    def from_dict(cls, data: dict[str, Any]) -> CitationMoveSpec:
         index = data.get("citation_index")
         placeholder = data.get("placeholder")
         expected = data.get("expected_field_sha256")
