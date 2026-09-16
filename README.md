@@ -8,8 +8,6 @@ manuscripts that contain active EndNote Cite While You Write fields.
 The tool never treats arbitrary AI edits as safe. It inventories and fingerprints
 EndNote fields, exposes supported citations and direct-format runs as opaque atoms,
 refuses protected structures, writes a new DOCX, and verifies structural invariants.
-The exact capability, evidence boundary, and next work are maintained in
-[`docs/STATUS.md`](docs/STATUS.md).
 
 ## Install
 
@@ -171,10 +169,6 @@ save and reopen another new copy. Keep the untouched master.
 
 ## Project records
 
-- Current facts and evidence: [`docs/STATUS.md`](docs/STATUS.md)
 - Documentation map: [`docs/README.md`](docs/README.md)
-
-Historical experiment protocols and raw validation records are retained in the
-private development repository and are not part of this public release.
 
 MIT. No warranty. Do not use the only copy of a manuscript.
