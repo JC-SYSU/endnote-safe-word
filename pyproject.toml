@@ -19,7 +19,7 @@ classifiers = [
 
 [project.optional-dependencies]
 mcp = ["mcp>=1.29,<2"]
-dev = ["build>=1.2", "pytest>=8.0", "tomli>=2.0; python_version < '3.11'"]
+dev = ["pytest>=8.0", "packaging>=23", "tomli>=2.0; python_version < '3.11'"]
 
 [project.scripts]
 endnote-safe-word = "endnote_safe_word.cli:main"

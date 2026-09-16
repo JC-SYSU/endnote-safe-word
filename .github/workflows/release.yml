@@ -10,12 +10,10 @@ permissions:
 
 jobs:
   release:
-    name: Build bundle and publish GitHub Release
+    name: Validate tag and publish GitHub Release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -27,19 +25,10 @@ jobs:
             echo "::error::tag v$TAG does not match project version $VERSION"
             exit 1
           }
-      - name: Install build dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install build
-      - name: Build release bundle
-        run: python packaging/build_release.py
       - name: Create GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          VERSION="${GITHUB_REF_NAME#v}"
           gh release create "$GITHUB_REF_NAME" \
-            "release/endnote-safe-word-${VERSION}.tar.gz" \
-            "release/endnote-safe-word-${VERSION}/SHA256SUMS" \
             --verify-tag \
             --generate-notes
