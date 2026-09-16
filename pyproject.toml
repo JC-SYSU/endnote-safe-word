@@ -28,9 +28,6 @@ word-document-safe-editing-mcp = "endnote_safe_word.mcp_server:main"
 [tool.setuptools.packages.find]
 where = ["src"]
 
-[tool.setuptools.package-data]
-endnote_safe_word = ["policies/*.json"]
-
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"

@@ -167,3 +167,41 @@ def test_change_surface_rejects_dangling_relationship(tmp_path: Path) -> None:
     )
     assert result["status"] == "fail"
     assert any("targets missing part" in item for item in result["failures"])
+
+
+def test_change_surface_rejects_added_unknown_package_part(tmp_path: Path) -> None:
+    source = tmp_path / "source.docx"
+    output = tmp_path / "output.docx"
+    make_nested_endnote_docx(source)
+    custom_xml = (
+        b'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
+        b'<Properties '
+        b'xmlns="http://schemas.openxmlformats.org/officeDocument/2006/'
+        b'custom-properties">'
+        b"<property name=\"OfficeCLI.Version\" fmtid=\""
+        b"{D5CDD505-2E9C-101B-9397-08002B2CF9AE}\" pid=\"2\">"
+        b"<vt:lpwstr xmlns:vt=\"http://schemas.openxmlformats.org/officeDocument/"
+        b"2006/docPropsVTypes\">1.0.136</vt:lpwstr></property></Properties>"
+    )
+    _rewrite_package(
+        source, output, additions={"docProps/custom.xml": custom_xml}
+    )
+    result = check_docx_change_surface(source, output, editable_paragraphs=[1])
+    assert result["status"] == "fail"
+    assert any("parts were added" in item for item in result["failures"])
+    assert "officecli_version" not in result
+
+
+def test_change_surface_reports_no_officecli_machinery(tmp_path: Path) -> None:
+    source = tmp_path / "source.docx"
+    output = tmp_path / "output.docx"
+    make_nested_endnote_docx(source)
+
+    _rewrite_package(
+        source,
+        output,
+        transforms={"word/document.xml": lambda data: data},
+    )
+    result = check_docx_change_surface(source, output, editable_paragraphs=[1])
+    assert "officecli_version" not in result
+    assert all(item["class"] != "known_tool_metadata" for item in result["changes"])

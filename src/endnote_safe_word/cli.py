@@ -10,7 +10,6 @@ from . import __version__
 from .atomic_mover import load_move_specs, move_citation_fields
 from .change_surface import check_docx_change_surface
 from .experiment_text import extract_visible_introduction
-from .officecli_guard import load_officecli_guard_plan, run_officecli_guarded
 from .ooxml import DocxError
 from .patcher import load_patch_specs, patch_docx
 from .rewrite_view import apply_rewrite_view, export_rewrite_view, load_rewrite_view
@@ -81,22 +80,6 @@ def build_parser() -> argparse.ArgumentParser:
     move.add_argument("--overwrite-output", action="store_true")
     move.add_argument("--keep-failed-output", action="store_true")
 
-    guarded = sub.add_parser(
-        "officecli-guard",
-        help="Execute a version-pinned allowlist of safe OfficeCLI DOCX writes.",
-    )
-    guarded.add_argument("input")
-    guarded.add_argument("--plan", required=True, help="JSON OfficeCLI guard plan.")
-    guarded.add_argument("--output", required=True)
-    guarded.add_argument("--report")
-    guarded.add_argument("--overwrite-output", action="store_true")
-    guarded.add_argument("--keep-failed-output", action="store_true")
-    guarded.add_argument(
-        "--allow-planned-format-change",
-        action="store_true",
-        help="Warn rather than fail for a deliberately conditioned format marker.",
-    )
-
     surface = sub.add_parser(
         "check-surface",
         help="Classify and enforce DOCX package and node change boundaries.",
@@ -109,7 +92,6 @@ def build_parser() -> argparse.ArgumentParser:
         type=_paragraph_list,
         help="Comma-separated one-based body paragraph numbers.",
     )
-    surface.add_argument("--officecli-version")
     surface.add_argument("--allow-new-run-properties", action="store_true")
     surface.add_argument("--json", dest="json_path")
 
@@ -202,23 +184,11 @@ def main(argv: list[str] | None = None) -> int:
             )
             _write_json(payload, args.report)
             return 0 if payload["status"] == "pass" else 2
-        if args.command == "officecli-guard":
-            payload = run_officecli_guarded(
-                args.input,
-                args.output,
-                load_officecli_guard_plan(args.plan),
-                overwrite_output=args.overwrite_output,
-                keep_failed_output=args.keep_failed_output,
-                strict_format_counts=not args.allow_planned_format_change,
-            )
-            _write_json(payload, args.report)
-            return 0 if payload["status"] == "pass" else 2
         if args.command == "check-surface":
             payload = check_docx_change_surface(
                 args.before,
                 args.after,
                 editable_paragraphs=args.editable_paragraphs,
-                officecli_version=args.officecli_version,
                 allow_new_run_properties=args.allow_new_run_properties,
             )
             _write_json(payload, args.json_path)
