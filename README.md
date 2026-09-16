@@ -1,5 +1,7 @@
 # EndNote Safe Word — validated alpha
 
+[![CI](https://github.com/OWNER/REPO/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/ci.yml)
+
 A conservative CLI, optional MCP server, and Codex Skill for editing `.docx`
 manuscripts that contain active EndNote Cite While You Write fields.
 
@@ -11,12 +13,13 @@ The exact capability, evidence boundary, and next work are maintained in
 
 ## Install a release
 
-Download and extract a versioned `endnote-safe-word-<version>.tar.gz` release bundle,
-then run its installer:
+Download the latest `endnote-safe-word-<version>.tar.gz` from the
+[Releases page](https://github.com/OWNER/REPO/releases/latest), extract it, then
+run its installer:
 
 ```bash
-tar -xzf endnote-safe-word-0.1.0a4.tar.gz
-cd endnote-safe-word-0.1.0a4
+tar -xzf endnote-safe-word-<version>.tar.gz
+cd endnote-safe-word-<version>
 ./install.sh
 ```
 
