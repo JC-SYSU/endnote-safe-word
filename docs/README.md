@@ -8,7 +8,6 @@
   source.
 - [`../skill/word-document-safe-editing/SKILL.md`](../skill/word-document-safe-editing/SKILL.md):
   agent-facing operating workflow.
-- [`../CONTRIBUTING.md`](../CONTRIBUTING.md): development and maintenance workflow.
 - [`RELEASING.md`](RELEASING.md): local release-bundle construction and acceptance.
 
 ## Historical evidence

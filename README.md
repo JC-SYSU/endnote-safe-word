@@ -40,9 +40,8 @@ outside its documented support boundary.
 Install locations can be overridden with `ENDNOTE_SAFE_WORD_DATA_HOME`,
 `ENDNOTE_SAFE_WORD_BIN_HOME`, `CODEX_HOME`, or `CODEX_SKILLS_HOME`.
 
-Developers should use [`CONTRIBUTING.md`](CONTRIBUTING.md); release maintainers should
-use [`docs/RELEASING.md`](docs/RELEASING.md). Editable installation is intentionally
-not part of the user workflow.
+Release maintainers should use [`docs/RELEASING.md`](docs/RELEASING.md). Editable
+installation is intentionally not part of the user workflow.
 
 ## Safety boundary
 
