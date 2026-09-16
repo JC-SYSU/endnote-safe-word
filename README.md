@@ -63,7 +63,6 @@ not part of the user workflow.
 | Substantial contiguous body rewrite | `rewrite-export`, then `rewrite-apply` | Preferred validated-alpha route |
 | Prepared citation relocation | `move-citations` | Low-level alpha |
 | Compare source and candidate | `verify`, `check-surface` | Required guardrails |
-| Version-pinned OfficeCLI operation | `officecli-guard` | Compatibility path |
 
 Exit code `0` means pass. Exit code `2` means refusal, validation failure, or input
 error.

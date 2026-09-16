@@ -42,7 +42,6 @@ structures still refuse under the boundaries below.
 | Substantial rewrite of a contiguous direct-body range | `rewrite-export` then `rewrite-apply` | Validated alpha; preferred |
 | Same-paragraph citation reorder with prepared placeholders | `move-citations` | Supported low-level alpha |
 | Compare a source and candidate | `verify` and `check-surface` | Required guardrails |
-| Guarded OfficeCLI run/range operation | `officecli-guard` | Compatibility path |
 
 ## Evidence summary
 

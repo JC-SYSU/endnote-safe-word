@@ -37,8 +37,6 @@ release bundle; detailed schema and fallback rules remain in the linked referenc
   citation fields with their claims.
 - Use `move-citations` only as a low-level prepared-placeholder operation when no
   prose rewrite is needed.
-- Treat `officecli-guard` as a version-pinned compatibility path, not the preferred
-  substantial-rewrite engine.
 
 ## Preflight
 
