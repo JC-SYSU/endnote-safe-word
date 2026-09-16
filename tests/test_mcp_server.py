@@ -1,6 +1,6 @@
 import warnings
 
-from endnote_safe_word.mcp_server import _build_server
+from word_document_safe_editing.mcp_server import _build_server
 
 
 def test_supported_mcp_sdk_builds_server_without_warnings() -> None:

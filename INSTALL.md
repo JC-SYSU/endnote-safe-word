@@ -46,7 +46,7 @@ python3 -m venv .venv
 .venv/bin/python -m pip install -e '.[mcp]'
 ```
 
-Expected: `Successfully installed endnote-safe-word-0.1.0a4` (or the current
+Expected: `Successfully installed word-document-safe-editing-0.1.0a4` (or the current
 version).
 Failure: missing network or pip index — check the pip source; `lxml` must
 come from PyPI wheels.
@@ -54,8 +54,8 @@ come from PyPI wheels.
 ## 2. Verify the CLI
 
 ```bash
-.venv/bin/endnote-safe-word --version
-.venv/bin/endnote-safe-word --help
+.venv/bin/word-document-safe-editing --version
+.venv/bin/word-document-safe-editing --help
 ```
 
 Expected: version prints `0.1.0a4` (matching pyproject.toml), help lists the
@@ -118,7 +118,7 @@ Expected: `ls ~/.codex/skills/word-document-safe-editing/SKILL.md` exists.
 Failure: source path missing — the clone is incomplete; re-clone.
 
 Do not install a copy under both names or keep an old
-`endnote-safe-word`-named copy alongside: the skill must appear under the
+`word-document-safe-editing`-named copy alongside: the skill must appear under the
 single name `word-document-safe-editing`.
 
 ## 5. Acceptance checklist
@@ -127,10 +127,10 @@ Run each item and report the outcome to the user:
 
 | # | Check | Command | Expected |
 | ---- | ---- | ---- | ---- |
-| 5.1 | CLI version | `.venv/bin/endnote-safe-word --version` | prints the repository version |
+| 5.1 | CLI version | `.venv/bin/word-document-safe-editing --version` | prints the repository version |
 | 5.2 | MCP registered | `codex mcp list` (or `claude mcp list`) | `word-document-safe-editing` appears |
 | 5.3 | Skill installed | `ls ~/.codex/skills/word-document-safe-editing/` (and `~/.claude/skills/` for B/C) | SKILL.md and references/ present |
-| 5.4 | End-to-end preflight | `.venv/bin/endnote-safe-word scan <some .docx>` | exit 0, JSON report with `error_count: 0` for a healthy document |
+| 5.4 | End-to-end preflight | `.venv/bin/word-document-safe-editing scan <some .docx>` | exit 0, JSON report with `error_count: 0` for a healthy document |
 
 Any failed item: fix per the table below before reporting back.
 
@@ -138,7 +138,7 @@ Any failed item: fix per the table below before reporting back.
 
 | Symptom | Likely cause | Fix |
 | ---- | ---- | ---- |
-| `endnote-safe-word: command not found` | venv bin not used | use `.venv/bin/endnote-safe-word`, or add `$REPO/.venv/bin` to PATH with user confirmation |
+| `word-document-safe-editing: command not found` | venv bin not used | use `.venv/bin/word-document-safe-editing`, or add `$REPO/.venv/bin` to PATH with user confirmation |
 | `mcp list` shows the server but calls fail | wrong absolute path in the stanza | re-check the path with `.venv/bin/which word-document-safe-editing-mcp` |
 | Skill not loaded by the agent | wrong directory or name | remove stray copies; keep exactly `word-document-safe-editing` |
 | `ImportError: No module named 'mcp'` | installed without `.[mcp]` | rerun section 1 with the `mcp` extra |
@@ -147,7 +147,7 @@ Any failed item: fix per the table below before reporting back.
 ## 7. Uninstall
 
 ```bash
-.venv/bin/python -m pip uninstall endnote-safe-word
+.venv/bin/python -m pip uninstall word-document-safe-editing
 rm -rf "$REPO/.venv"                       # the venv created by section 1
 rm -rf ~/.codex/skills/word-document-safe-editing   # and ~/.claude/skills/...
 ```

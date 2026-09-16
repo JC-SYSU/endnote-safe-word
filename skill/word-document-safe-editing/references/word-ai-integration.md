@@ -15,7 +15,7 @@ Use `patch` instead for a small exact edit in one ordinary `w:t` node.
 Use a general DOCX editor only when both native routes refuse and the user accepts
 the broader risk:
 
-1. Run `endnote-safe-word scan` on the untouched source and retain the JSON report.
+1. Run `word-document-safe-editing scan` on the untouched source and retain the JSON report.
 2. Give the editor a copy and never overwrite the source.
 3. Prohibit paragraph/cell `.text` replacement, document-format conversion, field
    edits, and changes to revisions or content controls.

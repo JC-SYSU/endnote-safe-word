@@ -1,13 +1,13 @@
 # Releasing
 
-EndNote Safe Word is published as a GitHub repository. Each version is a git
+word-document-safe-editing is published as a GitHub repository. Each version is a git
 tag; the tag triggers CI, which runs the test suite and creates a GitHub
 Release with generated notes. There is no self-extracting bundle — the
 deliverable is the repository itself, installed per `INSTALL.md`.
 
 ## Version rules
 
-- `pyproject.toml` `[project] version` and `endnote_safe_word.__version__`
+- `pyproject.toml` `[project] version` and `word_document_safe_editing.__version__`
   must name the same version; `tests/test_version_consistency.py` enforces it.
 - GitHub tag names must be `v<version>`, for example `v0.1.0a4`. The release
   workflow refuses a tag that does not match the project version.

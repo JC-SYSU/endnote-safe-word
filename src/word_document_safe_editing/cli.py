@@ -42,7 +42,7 @@ def _paragraph_list(value: str) -> list[int]:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="endnote-safe-word",
+        prog="word-document-safe-editing",
         description="Conservative guardrails for DOCX files containing EndNote fields.",
     )
     parser.add_argument("--version", action="version", version=__version__)

@@ -1,6 +1,6 @@
-# EndNote Safe Word — validated alpha
+# word-document-safe-editing — validated alpha
 
-[![CI](https://github.com/JC-SYSU/endnote-safe-word/actions/workflows/ci.yml/badge.svg)](https://github.com/JC-SYSU/endnote-safe-word/actions/workflows/ci.yml)
+[![CI](https://github.com/JC-SYSU/word-document-safe-editing/actions/workflows/ci.yml/badge.svg)](https://github.com/JC-SYSU/word-document-safe-editing/actions/workflows/ci.yml)
 
 A conservative CLI, optional MCP server, and Codex Skill for editing `.docx`
 manuscripts that contain active EndNote Cite While You Write fields.
@@ -18,8 +18,8 @@ The exact capability, evidence boundary, and next work are maintained in
 installs the three components (CLI, MCP server, Skill):
 
 ```text
-You are installing EndNote Safe Word. The source repository is
-https://github.com/JC-SYSU/endnote-safe-word. Do the following:
+You are installing word-document-safe-editing. The source repository is
+https://github.com/JC-SYSU/word-document-safe-editing. Do the following:
 
 1. Clone (or cd into) the repository at $REPO.
 2. Read INSTALL.md in full and execute it step by step: probe the
@@ -35,7 +35,7 @@ https://github.com/JC-SYSU/endnote-safe-word. Do the following:
 ```
 
 If you prefer to install by hand, follow [`INSTALL.md`](INSTALL.md) directly.
-The three components: an `endnote-safe-word` CLI, the
+The three components: a `word-document-safe-editing` CLI, the
 `word-document-safe-editing` MCP server (you register with your agent client),
 and the `word-document-safe-editing` Skill (the agent behavior contract, kept
 in the client's skills directory).
@@ -74,7 +74,7 @@ error.
 ## Scan
 
 ```bash
-endnote-safe-word scan manuscript.docx --json manuscript.preflight.json
+word-document-safe-editing scan manuscript.docx --json manuscript.preflight.json
 ```
 
 Stop on XML errors, unbalanced fields, or unexplained field/record counts.
@@ -82,7 +82,7 @@ Stop on XML errors, unbalanced fields, or unexplained field/record counts.
 ## Exact local patch
 
 ```bash
-endnote-safe-word patch manuscript.docx \
+word-document-safe-editing patch manuscript.docx \
   --patches patches.json \
   --output manuscript_patched.docx \
   --report manuscript.patch-report.json
@@ -97,7 +97,7 @@ Use the rewrite route rather than broadening a refused patch.
 Export one contiguous range of direct body paragraphs:
 
 ```bash
-endnote-safe-word rewrite-export manuscript.docx \
+word-document-safe-editing rewrite-export manuscript.docx \
   --paragraphs 1,2,3,4 \
   --json manuscript.rewrite-view.json
 ```
@@ -107,7 +107,7 @@ Edit only each `paragraphs[].text` value. Keep every `[[CIT:Cn]]` citation token
 DOCX:
 
 ```bash
-endnote-safe-word rewrite-apply manuscript.docx \
+word-document-safe-editing rewrite-apply manuscript.docx \
   --view manuscript.rewrite-view.json \
   --output manuscript_rewritten.docx \
   --report manuscript.rewrite-report.json
@@ -131,10 +131,10 @@ independent audit or troubleshooting, for example to compare two documents
 outside a rewrite transaction:
 
 ```bash
-endnote-safe-word verify manuscript.docx manuscript_rewritten.docx \
+word-document-safe-editing verify manuscript.docx manuscript_rewritten.docx \
   --json manuscript.verify.json
 
-endnote-safe-word check-surface manuscript.docx manuscript_rewritten.docx \
+word-document-safe-editing check-surface manuscript.docx manuscript_rewritten.docx \
   --editable-paragraphs 1,2,3,4 \
   --json manuscript.surface.json
 ```

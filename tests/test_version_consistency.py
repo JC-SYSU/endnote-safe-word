@@ -3,7 +3,7 @@ from __future__ import annotations
 import tomllib
 from pathlib import Path
 
-import endnote_safe_word
+import word_document_safe_editing
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -11,10 +11,10 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_pyproject_and_package_version_match() -> None:
     with (ROOT / "pyproject.toml").open("rb") as handle:
         metadata_version = tomllib.load(handle)["project"]["version"]
-    assert metadata_version == endnote_safe_word.__version__
+    assert metadata_version == word_document_safe_editing.__version__
 
 
 def test_version_is_pep440_parseable() -> None:
     from packaging.version import Version  # type: ignore[import-not-found]
 
-    Version(endnote_safe_word.__version__)
+    Version(word_document_safe_editing.__version__)

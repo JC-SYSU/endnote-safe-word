@@ -7,12 +7,15 @@ import pytest
 from fixture_factory import make_docx, make_nested_endnote_docx
 from lxml import etree
 
-from endnote_safe_word.atomic_mover import CitationMoveSpec, move_citation_fields
-from endnote_safe_word.experiment_text import extract_visible_introduction
-from endnote_safe_word.ooxml import DocxError
-from endnote_safe_word.patcher import PatchSpec, patch_docx
-from endnote_safe_word.scanner import scan_docx
-from endnote_safe_word.verifier import verify_docx
+from word_document_safe_editing.atomic_mover import (
+    CitationMoveSpec,
+    move_citation_fields,
+)
+from word_document_safe_editing.experiment_text import extract_visible_introduction
+from word_document_safe_editing.ooxml import DocxError
+from word_document_safe_editing.patcher import PatchSpec, patch_docx
+from word_document_safe_editing.scanner import scan_docx
+from word_document_safe_editing.verifier import verify_docx
 
 
 def test_scan_detects_endnote_field(tmp_path: Path) -> None:

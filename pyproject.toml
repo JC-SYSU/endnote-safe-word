@@ -3,7 +3,7 @@ requires = ["setuptools>=69", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "endnote-safe-word"
+name = "word-document-safe-editing"
 version = "0.1.0a4"
 description = "Conservative OOXML guardrails for editing Word documents containing EndNote CWYW fields"
 readme = "README.md"
@@ -22,8 +22,8 @@ mcp = ["mcp>=1.29,<2"]
 dev = ["pytest>=8.0", "packaging>=23"]
 
 [project.scripts]
-endnote-safe-word = "endnote_safe_word.cli:main"
-word-document-safe-editing-mcp = "endnote_safe_word.mcp_server:main"
+word-document-safe-editing = "word_document_safe_editing.cli:main"
+word-document-safe-editing-mcp = "word_document_safe_editing.mcp_server:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

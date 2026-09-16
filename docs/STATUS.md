@@ -9,7 +9,7 @@ this public release.
 
 ## Current designation
 
-EndNote Safe Word is a **validated alpha** for conservative, field-aware editing of
+word-document-safe-editing is a **validated alpha** for conservative, field-aware editing of
 DOCX manuscripts. Its preferred substantial-edit route separates language-model
 rewriting from DOCX mutation:
 

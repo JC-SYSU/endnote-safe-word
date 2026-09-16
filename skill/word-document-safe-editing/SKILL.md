@@ -6,7 +6,7 @@ description: Safely inspect, edit, rewrite, and verify Microsoft Word DOCX docum
 # Word document safe editing
 
 Invoke this Skill for every Word document edit. Use the installed
-`endnote-safe-word` CLI to preflight every DOCX and, when active EndNote
+`word-document-safe-editing` CLI to preflight every DOCX and, when active EndNote
 fields are present, before and after each edit. The Skill and CLI are
 installed together from this repository per `INSTALL.md`; detailed schema and
 fallback rules remain in the linked references.
@@ -44,7 +44,7 @@ fallback rules remain in the linked references.
 ## Preflight
 
 ```bash
-endnote-safe-word scan manuscript.docx --json manuscript.preflight.json
+word-document-safe-editing scan manuscript.docx --json manuscript.preflight.json
 ```
 
 Stop on XML errors, unbalanced fields, or an unexplained field/record count.
@@ -54,7 +54,7 @@ Stop on XML errors, unbalanced fields, or an unexplained field/record count.
 Prepare the schema described in `references/patch-schema.md`, then run:
 
 ```bash
-endnote-safe-word patch manuscript.docx \
+word-document-safe-editing patch manuscript.docx \
   --patches patches.json \
   --output manuscript_patched.docx \
   --report manuscript.patch-report.json
@@ -67,7 +67,7 @@ Do not broaden a refused patch to paragraph-level replacement.
 Export the selected direct-body paragraphs:
 
 ```bash
-endnote-safe-word rewrite-export manuscript.docx \
+word-document-safe-editing rewrite-export manuscript.docx \
   --paragraphs 1,2,3,4 \
   --json manuscript.rewrite-view.json
 ```
@@ -80,7 +80,7 @@ it supports. Keep every token exactly once; do not invent citations or claims.
 Map the edited view back to native OOXML:
 
 ```bash
-endnote-safe-word rewrite-apply manuscript.docx \
+word-document-safe-editing rewrite-apply manuscript.docx \
   --view manuscript.rewrite-view.json \
   --output manuscript_rewritten.docx \
   --report manuscript.rewrite-report.json
@@ -102,10 +102,10 @@ Run standalone `verify` or `check-surface` only for independent audit or
 troubleshooting:
 
 ```bash
-endnote-safe-word verify manuscript.docx manuscript_rewritten.docx \
+word-document-safe-editing verify manuscript.docx manuscript_rewritten.docx \
   --json manuscript.verify.json
 
-endnote-safe-word check-surface manuscript.docx manuscript_rewritten.docx \
+word-document-safe-editing check-surface manuscript.docx manuscript_rewritten.docx \
   --editable-paragraphs 1,2,3,4 \
   --json manuscript.surface.json
 ```

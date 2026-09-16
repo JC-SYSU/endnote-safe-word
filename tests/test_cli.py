@@ -5,8 +5,8 @@ from pathlib import Path
 
 from fixture_factory import make_nested_endnote_docx
 
-from endnote_safe_word.cli import main
-from endnote_safe_word.rewrite_view import export_rewrite_view
+from word_document_safe_editing.cli import main
+from word_document_safe_editing.rewrite_view import export_rewrite_view
 
 
 def test_cli_verify_rejects_reordered_fields_without_flag(
